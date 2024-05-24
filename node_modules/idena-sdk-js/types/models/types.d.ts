@@ -1,0 +1,25 @@
+export declare enum TransactionType {
+    SendTx = 0,
+    ActivationTx = 1,
+    InviteTx = 2,
+    KillTx = 3,
+    SubmitFlipTx = 4,
+    SubmitAnswersHashTx = 5,
+    SubmitShortAnswersTx = 6,
+    SubmitLongAnswersTx = 7,
+    EvidenceTx = 8,
+    OnlineStatusTx = 9,
+    KillInviteeTx = 10,
+    ChangeGodAddressTx = 11,
+    BurnTx = 12,
+    ChangeProfileTx = 13,
+    DeleteFlipTx = 14,
+    DeployContractTx = 15,
+    CallContractTx = 16,
+    TerminateContractTx = 17,
+    DelegateTx = 18,
+    UndelegateTx = 19,
+    KillDelegatorTx = 20,
+    StoreToIpfsTx = 21
+}
+//# sourceMappingURL=types.d.ts.map
