@@ -121,6 +121,7 @@ export class IRC721 {
 
   @mutateState
   mint(to: Address, tokenId: u64, uri: string): void {
+    util.assert(Context.caller() == this._owner, "Only owner can mint");
     util.assert(to != ZERO_ADDRESS, "Mint to the zero address");
     util.assert(!this._exists(tokenId), "Token already minted");
 
@@ -131,7 +132,7 @@ export class IRC721 {
     this.balances.set(to, this.balances.get(to, 0) + 1);
     
     this._totalSupply += 1;
-    Host.emitEvent("Transfer", [ZERO_ADDRESS, to, Bytes.fromU64(tokenId)]);
+    Host.emitEvent("Mint", [ZERO_ADDRESS, to, Bytes.fromU64(tokenId), Bytes.fromString(uri)]);
   }
 
   @mutateState
@@ -148,7 +149,7 @@ export class IRC721 {
     this.tokenURIs.delete(tokenId);
     
     this._totalSupply -= 1;
-    Host.emitEvent("Transfer", [owner, ZERO_ADDRESS, Bytes.fromU64(tokenId)]);
+    Host.emitEvent("Burn", [owner, ZERO_ADDRESS, Bytes.fromU64(tokenId)]);
   }
 
   @view
